@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/Core/">
+    <Project Path="LeaveManagement.Core.Application/LeaveManagement.Core.Application.csproj" />
+    <Project Path="LeaveManagement.Core.Domain/LeaveManagement.Core.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Deploy/">
+    <File Path="azure-pipeline-production.yml" />
+    <File Path="azure-pipeline-staging.yml" />
+    <File Path="azure-pipeline-test.yml" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="LeaveManagement.Infrastructure.ExternalWebAPIs/LeaveManagement.Infrastructure.ExternalWebAPIs.csproj" Id="0c85aa79-d978-43a3-ad21-48e20d4603a3" />
+    <Project Path="LeaveManagement.Infrastructure.Messaging/LeaveManagement.Infrastructure.Messaging.csproj" Id="65aff50a-8552-4388-b798-0a28939d5c33" />
+    <Project Path="LeaveManagement.Infrastructure.Persistence/LeaveManagement.Infrastructure.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="LeaveManagement.Presentation.WebAPI/LeaveManagement.Presentation.WebAPI.csproj" Id="2688fa20-00d1-4b5e-b87d-cb25aa47c049" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="LeaveManagement.Core.Application.UnitTests/LeaveManagement.Core.Application.UnitTests.csproj" Id="aea4ae5d-5644-4757-96f7-a6a120f5483a" />
+    <Project Path="LeaveManagement.IntegrationTests/LeaveManagement.IntegrationTests.csproj" Id="3d052657-237b-4afb-a814-f60f898de4c6" />
+  </Folder>
+</Solution>
