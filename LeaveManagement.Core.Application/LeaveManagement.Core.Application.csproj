@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="DomainEventsHandlers\" />
+    <Folder Include="UseCase\Commands\" />
+    <Folder Include="UseCase\Queries\" />
+  </ItemGroup>
+
 </Project>
