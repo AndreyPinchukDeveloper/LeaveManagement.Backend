@@ -72,7 +72,6 @@ src/
   dotnet run --project src/LeaveManagement.API
 ```
 
-🤝 Contributing
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 
