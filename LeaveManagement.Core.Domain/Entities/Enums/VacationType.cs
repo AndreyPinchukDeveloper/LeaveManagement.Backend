@@ -2,5 +2,7 @@
 
 public enum VacationType
 {
-
+    Paid,
+    Unpaid,
+    SickDay
 }
