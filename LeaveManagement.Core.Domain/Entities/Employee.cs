@@ -42,5 +42,5 @@ public sealed class Employee : AggregateRoot
         }
     }
 
-    public Organization Organization { get; private set; }
+    public Guid OrganizationId { get; private set; }//only reference to aggregate root
 }

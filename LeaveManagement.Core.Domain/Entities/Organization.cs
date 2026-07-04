@@ -1,5 +1,11 @@
-﻿namespace LeaveManagement.Core.Domain.Entities;
+﻿using LeaveManagement.Core.Domain.Entities.Base;
+using LeaveManagement.Core.Domain.Entities.Enums;
 
-public sealed class Organization
+namespace LeaveManagement.Core.Domain.Entities;
+
+public sealed class Organization : AggregateRoot
 {
+    public string ShortName { get; private set; }
+    public string FullName { get; private set; }
+    public CountryCode CountryCode { get; private set; }
 }
