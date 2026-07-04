@@ -1,11 +1,18 @@
 ﻿using LeaveManagement.Core.Domain.Entities.Base;
 using LeaveManagement.Core.Domain.Entities.Enums;
 
-namespace LeaveManagement.Core.Domain.Entities;
+namespace LeaveManagement.Core.Domain.Organization;
 
 public sealed class Organization : AggregateRoot
 {
     public string ShortName { get; private set; }
     public string FullName { get; private set; }
     public CountryCode CountryCode { get; private set; }
+
+    public Organization(Guid id, string shortName, string fullName, CountryCode countryCode) : base(id)
+    {
+        ShortName = shortName;
+        FullName = fullName;
+        CountryCode = countryCode;
+    }
 }

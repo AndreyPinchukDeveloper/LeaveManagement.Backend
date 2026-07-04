@@ -2,25 +2,26 @@
 
 namespace LeaveManagement.Core.Domain.Organization;
 
-public sealed class Department : DomainEntity
+/// <summary>
+/// We use AggregateRoot because we work with very large organizations
+/// </summary>
+public sealed class Department : AggregateRoot
 {
+    public Guid OrganizationId { get; private set; }
     public string Name { get; private set; }
     public string Code { get; private set; }
     public Guid? ParentDepartmentId { get; private set; }
     public bool IsActive { get; private set; }
+    private readonly List<Guid> _subDepartmentIds = new();
+    public IReadOnlyCollection<Guid> SubDepartmentIds => _subDepartmentIds.AsReadOnly();
 
-    private Department(Guid id, string name, string code, Guid? parentDepartmentId = null) : base(id)
+    public Department(Guid id, Guid organizationId, string name, string code, Guid? parentDepartmentId = null) : base(id)
     {
+        OrganizationId = organizationId;
         Name = name;
         Code = code;
         ParentDepartmentId = parentDepartmentId;
         IsActive = true;
-    }
-
-    public void Update(string name, string code)
-    {
-        Name = name;
-        Code = code;
     }
 
     public void Deactivate() => IsActive = false;

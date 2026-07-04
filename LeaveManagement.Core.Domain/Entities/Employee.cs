@@ -15,7 +15,21 @@ public sealed class Employee : AggregateRoot
     public bool IsApprover { get; private set; }
     public bool IsManager { get; private set; }
 
-    public Employee(string firstName, string lastName, string middleName, string accountName, string? email, bool isAdmin, bool isApprover, bool isManager)
+    public Guid OrganizationId { get; private set; }
+    public Guid DepartmentId { get; private set; }
+
+    public Employee(
+        Guid id, 
+        string firstName, 
+        string lastName, 
+        string middleName, 
+        string accountName, 
+        string? email, 
+        bool isAdmin,
+        bool isApprover, 
+        bool isManager, 
+        Guid organizationId, 
+        Guid departmentId) : base(id)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -25,6 +39,8 @@ public sealed class Employee : AggregateRoot
         IsAdmin = isAdmin;
         IsApprover = isApprover;
         IsManager = isManager;
+        OrganizationId = organizationId;
+        DepartmentId = departmentId;
     }
     public string FullName => $"{LastName} {FirstName} {MiddleName}";
 
@@ -41,6 +57,4 @@ public sealed class Employee : AggregateRoot
             return result;
         }
     }
-
-    public Guid OrganizationId { get; private set; }//only reference to aggregate root
 }
