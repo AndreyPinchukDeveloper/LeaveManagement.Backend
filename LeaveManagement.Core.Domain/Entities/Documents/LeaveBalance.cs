@@ -5,4 +5,5 @@ namespace LeaveManagement.Core.Domain.Entities.Documents;
 public class LeaveBalance : AggregateRoot
 {
 
+
 }
