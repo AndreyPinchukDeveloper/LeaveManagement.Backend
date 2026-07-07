@@ -1,7 +1,7 @@
 ﻿using LeaveManagement.Core.Domain.Entities.Base;
 using LeaveManagement.Core.Domain.Entities.Enums;
 
-namespace LeaveManagement.Core.Domain.Organization;
+namespace LeaveManagement.Core.Domain.Entities.Organization;
 
 public sealed class Organization : AggregateRoot
 {

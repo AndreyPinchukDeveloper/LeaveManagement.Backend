@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Common\Exceptions\" />
     <Folder Include="DomainEventsHandlers\" />
+    <Folder Include="Mappings\" />
+    <Folder Include="Services\" />
     <Folder Include="UseCase\Commands\" />
     <Folder Include="UseCase\Queries\" />
   </ItemGroup>
