@@ -1,4 +1,5 @@
 ﻿using LeaveManagement.Core.Domain.Entities.Base;
+using LeaveManagement.Core.Domain.Entities.Documents;
 using LeaveManagement.Core.Domain.Entities.Enums;
 
 namespace LeaveManagement.Core.Domain.Entities;
@@ -40,6 +41,9 @@ public sealed class Employee : AggregateRoot
     public Guid OrganizationId { get; private set; }
     public Guid DepartmentId { get; private set; }
 
+    private List<LeaveBalance> _leaveBalances = [];
+    public IReadOnlyCollection<LeaveBalance> LeaveBalances => _leaveBalances.AsReadOnly();
+
     public Employee(
         Guid id,
         string firstName,
@@ -65,7 +69,8 @@ public sealed class Employee : AggregateRoot
         decimal leaveLoadingPercentage,
         decimal annualLeaveWeeksPerYear,
         bool proRataLeave,
-        AustralianState state) : base(id)
+        AustralianState state,
+        IEnumerable<LeaveBalance> leaveBalances) : base(id)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -91,6 +96,7 @@ public sealed class Employee : AggregateRoot
         AnnualLeaveWeeksPerYear = annualLeaveWeeksPerYear;
         ProRataLeave = proRataLeave;
         State = state;
+        _leaveBalances = leaveBalances.ToList();
     }
     public string FullName => $"{LastName} {FirstName} {MiddleName}";
 

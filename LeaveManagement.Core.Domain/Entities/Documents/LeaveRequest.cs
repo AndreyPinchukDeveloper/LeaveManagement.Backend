@@ -4,6 +4,10 @@ using LeaveManagement.Core.Domain.Entities.Enums.Documents;
 
 namespace LeaveManagement.Core.Domain.Entities.Documents;
 
+/// <summary>
+/// Main leave request aggregate - covers annual leave, sick leave, personal leave etc.
+/// Under Australian law, employer can request medical certificate for any sick leave
+/// </summary>
 public sealed class LeaveRequest : AggregateRoot
 {
     public string RequestNumber { get; private set; }
@@ -34,13 +38,17 @@ public sealed class LeaveRequest : AggregateRoot
     // Audit
     public DateTime CreatedAt { get; private set; }
     public DateTime? ModifiedAt { get; private set; }
+    public Guid LastModifiedBy { get; private set; }
     public string ModifiedBy { get; private set; }
+
+
+    public Guid LeavePolicyId { get; private set; }
 
     private readonly List<MedicalCertificate> _medicalCertificates;
     public IReadOnlyList<MedicalCertificate> MedicalCertificate => _medicalCertificates.AsReadOnly();
 
     public LeaveRequest(Guid id, string requestNumber, Guid employeeId, LeaveType leaveType, LeaveRequestStatus status, DateTime startDate, DateTime endDate, bool startHalfDay, bool endHalfDay, decimal totalDays, DateTime? expectedBirthDate, DateTime? partnerLeaveStartDate, bool isPrimaryCarer, DateTime createdAt, DateTime? modifiedAt, string modifiedBy,
-        IEnumerable<MedicalCertificate> medicalCertificates) : base(id)
+        IEnumerable<MedicalCertificate> medicalCertificates, Guid lastModifiedBy) : base(id)
     {
         RequestNumber = requestNumber;
         EmployeeId = employeeId;
@@ -59,5 +67,6 @@ public sealed class LeaveRequest : AggregateRoot
         ModifiedBy = modifiedBy;
 
         _medicalCertificates = medicalCertificates.ToList();
+        LastModifiedBy = lastModifiedBy;
     }
 }

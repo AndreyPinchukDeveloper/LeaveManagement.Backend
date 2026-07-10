@@ -23,7 +23,13 @@ public sealed class MedicalCertificate : DomainEntity
     public bool SuitableForModifiedDuties { get; private set; }
     public string Restrictions { get; private set; }
 
-    public MedicalCertificate(Guid id, MedicalCertificateType certificateType, string doctorName, string providerNumber, string practiceName, string practiceAddress, DateTime startDate, DateTime endDate, DateTime? returnToWorkDate, bool fitForWork, bool suitableForModifiedDuties, string restrictions) : base(id)
+    // Audit
+    public DateTime CreatedAt { get; private set; }
+    public DateTime? ModifiedAt { get; private set; }
+    public Guid LastModifiedBy { get; private set; }
+    public string ModifiedBy { get; private set; }
+
+    public MedicalCertificate(Guid id, MedicalCertificateType certificateType, string doctorName, string providerNumber, string practiceName, string practiceAddress, DateTime startDate, DateTime endDate, DateTime? returnToWorkDate, bool fitForWork, bool suitableForModifiedDuties, string restrictions, DateTime createdAt, DateTime? modifiedAt, Guid lastModifiedBy, string modifiedBy) : base(id)
     {
         CertificateType = certificateType;
         DoctorName = doctorName;
@@ -36,5 +42,9 @@ public sealed class MedicalCertificate : DomainEntity
         FitForWork = fitForWork;
         SuitableForModifiedDuties = suitableForModifiedDuties;
         Restrictions = restrictions;
+        CreatedAt = createdAt;
+        ModifiedAt = modifiedAt;
+        LastModifiedBy = lastModifiedBy;
+        ModifiedBy = modifiedBy;
     }
 }
